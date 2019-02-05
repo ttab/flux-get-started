@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sunk-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sunk
+  template:
+    metadata:
+      labels:
+        app: sunk
+    spec:
+      containers:
+      - env:
+        - name: CONF
+          value: conf-prod.json
+        name: sunk-container
+        image: docker-registry.ad.tt.se/ttab/sunk:prod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sunk-service
+spec:
+  ports:
+  - name: http
+    targetPort: 3333
+    port: 3333
+  selector:
+    app: sunk
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sunk-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: blablabla
+    http:
+      paths:
+      - path: /sunk
+        backend:
+          serviceName: sunk-service
+          servicePort: http
