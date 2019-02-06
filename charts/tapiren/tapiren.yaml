@@ -12,3 +12,39 @@ spec:
     git: ssh://git@github.com/mikerm4n/flux-get-started
     ref: master
     path: charts/tapiren
+  values:
+    replicaCount: 1
+    namespace: default
+    configmap:
+      enable: false
+    deployment: {}
+    image:
+      repository: docker-registry.ad.tt.se/ttab/tapiren
+      tag: prod
+      pullPolicy: IfNotPresent
+      env:
+        - name: CONF
+          value: conf-prod.json
+    resources:
+      requests:
+        memory: 40Mi
+      limits:
+        memory: 80Mi
+    pvc:
+      enable: false
+      size: 
+      accessModes:
+        - ReadWriteOnce
+    service:
+      enabled: true
+      name: 
+      ports:
+        - name: http
+          port: 3333 
+          targetPort: 3333
+    ingress:
+      enabled: true
+      hosts:
+        - adm1.tt.se/tapiren
+        - traefik1.tt.se/tapiren
+  
