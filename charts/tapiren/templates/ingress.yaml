@@ -1,0 +1,28 @@
+{{- if .Values.ingress.enabled -}}
+{{- $serviceName := include "ttservice.servicename" . -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "ttservice.ingressname" . }}
+  namespace: {{ .Values.namespace }}
+{{- if .Values.ingress.metadata }}
+{{ toYaml .Values.ingress.metadata | indent 2 -}}
+{{- end }}
+  annotations:
+    kubernetes.io/ingress.class: traefik
+{{- if .Values.ingress.annotations }}
+{{ toYaml .Values.ingress.annotations | indent 4 -}}
+{{- end }}
+spec:
+  rules:
+{{- range .Values.ingress.hosts }}
+ {{- $url := splitList "/" . }}
+  - host: {{ first $url }}
+    http:
+      paths:
+      - path: /{{ rest $url | join "/" }}
+        backend:
+          serviceName: {{ $serviceName }}
+          servicePort: http
+{{- end -}}
+{{- end -}}
