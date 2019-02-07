@@ -19,10 +19,11 @@ spec:
     configmap:
       enable: false
     deployment: {}
-    image:
-      repository: docker-registry.ad.tt.se/ttab/tapiren
-      tag: v1.0.22
-      pullPolicy: IfNotPresent
+    image: docker-registry.ad.tt.se/ttab/tapiren:prod
+#    image:
+#      repository: docker-registry.ad.tt.se/ttab/tapiren
+#      tag: v1.0.22
+#      pullPolicy: IfNotPresent
       env:
         - name: CONF
           value: conf-prod.json
