@@ -9,7 +9,7 @@ metadata:
 spec:
   releaseName: tapiren
   chart:
-    git: ssh://git@github.com/weaveworks/flux-get-started
+    git: ssh://git@github.com/mikerm4n/flux-get-started
     ref: master
     path: charts/tapiren
   values:
