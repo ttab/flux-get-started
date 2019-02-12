@@ -13,12 +13,12 @@ spec:
     ref: master
     path: charts/tapiren
   values:
-    image: docker-registry.ad.tt.se/ttab/tapiren
-    tag: latest
-
-    env:
-      - name: CONF
-        value: conf-prod.json
+    image:
+      repository: docker-registry.ad.tt.se/ttab/tapiren
+      tag: latest
+      env:
+        - name: CONF
+          value: conf-prod.json
     resources:
       requests:
         memory: 40Mi
