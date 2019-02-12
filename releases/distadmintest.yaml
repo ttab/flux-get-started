@@ -7,7 +7,7 @@ metadata:
   annotations:
     flux.weave.works/automated: "false"
 spec:
-  releaseName: tapiren
+  releaseName: distadmintest
   chart:
     git: ssh://git@github.com/mikerm4n/flux-get-started
     ref: master
