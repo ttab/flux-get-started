@@ -31,6 +31,10 @@ spec:
         - name: http
           port: 3333
           targetPort: 3333
+
+    pvc:
+      enable: false
+
     ingress:
       enabled: true
       hosts:
