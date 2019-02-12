@@ -13,6 +13,7 @@ spec:
     ref: master
     path: charts/tapiren
   values:
+    namespace: default
     image:
       repository: docker-registry.ad.tt.se/ttab/tapiren
       tag: latest
