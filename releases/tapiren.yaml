@@ -13,4 +13,26 @@ spec:
     ref: master
     path: charts/tapiren
   values:
-    image: docker-registry.ad.tt.se/ttab/tapiren:prod    
+    image: docker-registry.ad.tt.se/ttab/tapiren
+    tag: prod
+
+    env:
+      - name: CONF
+        value: conf-stage.json
+    resources:
+      requests:
+        memory: 40Mi
+      limits:
+        memory: 80Mi
+
+    service:
+      enabled: true
+      ports:
+        - name: http
+          port: 3333
+          targetPort: 3333
+    ingress:
+      enabled: true
+      hosts:
+        - adm.tt.se/tapiren
+        - traefik.tt.se/tapiren
