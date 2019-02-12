@@ -2,12 +2,12 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: tapiren
+  name: tapiren2
   namespace: default
   annotations:
     flux.weave.works/automated: "false"
 spec:
-  releaseName: tapiren
+  releaseName: tapiren2
   chart:
     git: ssh://git@github.com:ttab/flux-get-started.git
     ref: master
