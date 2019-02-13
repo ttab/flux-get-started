@@ -4,8 +4,6 @@ kind: HelmRelease
 metadata:
   name: tapiren
   namespace: default
-  annotations:
-    flux.weave.works/automated: "false"
 spec:
   releaseName: tapiren
   chart:
@@ -18,8 +16,8 @@ spec:
       repository: docker-registry.ad.tt.se/ttab/tapiren
       tag: latest
       env:
-        - name: CONF
-          value: conf-prod.json
+      - name: CONF
+        value: conf-prod.json
     resources:
       requests:
         memory: 40Mi
@@ -29,9 +27,9 @@ spec:
     service:
       enabled: true
       ports:
-        - name: http
-          port: 3333
-          targetPort: 3333
+      - name: http
+        port: 3333
+        targetPort: 3333
 
     pvc:
       enable: false
@@ -39,5 +37,5 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - adm.tt.se/tapiren
-        - traefik.tt.se/tapiren
+      - adm.tt.se/tapiren
+      - traefik.tt.se/tapiren
