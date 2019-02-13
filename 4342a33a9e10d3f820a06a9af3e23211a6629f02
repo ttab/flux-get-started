@@ -1,0 +1,1 @@
+{"jobID":"2b65a3af-84d8-49c6-4bf9-98189474ab60","spec":{"type":"policy","cause":{"Message":"","User":"Anders Berggren \u003ca@bgn.me\u003e"},"spec":{"default:helmrelease/tapiren2":{"add":{},"remove":{"automated":"true"}}}},"result":null}
