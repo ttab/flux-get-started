@@ -4,8 +4,6 @@ kind: HelmRelease
 metadata:
   name: tapiren2
   namespace: default
-  annotations:
-    flux.weave.works/automated: "true"
 spec:
   releaseName: tapiren2
   chart:
