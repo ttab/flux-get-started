@@ -24,11 +24,11 @@ spec:
 #    
 #    deployment: {}
 #    
-#    resources:
-#      requests:
-#        memory: 40Mi
-#      limits:
-#        memory: 900Mi
+    resources:
+      requests:
+        memory: 100Mi
+      limits:
+        memory: 100Mi
 #    
 #    pvc:
 #      enable: false
