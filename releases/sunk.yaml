@@ -8,7 +8,7 @@ spec:
   chart:
     git: git@github.com:ttab/flux-get-started.git
     ref: master
-    path: charts/tapiren
+    path: charts/sunk
   values:
     image:
       repository: docker-registry.ad.tt.se/ttab/sunk
