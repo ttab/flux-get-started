@@ -1,0 +1,16 @@
+{{- if .Values.configmap.enable }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "ttservice.deployname" . }}
+  namespace: {{ .Values.namespace }}
+{{- if .Values.configmap.metadata }}
+{{ toYaml .Values.configmap.metadata | indent 2 -}}
+{{- end }}
+{{- if .Values.configmap.annotations }}
+  annotations:
+{{ toYaml .Values.configmap.annotations | indent 4 -}}
+{{- end }}
+data:
+{{ toYaml .Values.configmap.data | indent 2 -}}
+{{- end }}

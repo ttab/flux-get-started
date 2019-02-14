@@ -1,0 +1,41 @@
+replicaCount: 1
+namespace: prod
+
+configmap:
+  enable: false
+
+deployment: {}
+
+image:
+  repository: docker-registry.ad.tt.se/ttab/sunk
+  tag: prod
+  pullPolicy: IfNotPresent
+  env:
+    - name: CONF
+      value: conf-prod.json
+
+resources:
+  requests:
+    memory: 40Mi
+  limits:
+    memory: 70Mi
+
+pvc:
+  enable: false
+  size: 
+  accessModes:
+    - ReadWriteOnce
+
+service:
+  enabled: true
+  name: 
+  ports:
+    - name: http
+      port: 3333
+      targetPort: 3333
+
+ingress:
+  enabled: true
+  hosts: 
+    - traefik.a.tt.se/sunk
+
