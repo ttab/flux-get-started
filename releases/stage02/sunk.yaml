@@ -1,0 +1,50 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: sunk
+  namespace: stage02
+spec:
+  chart:
+    git: git@github.com:ttab/flux-get-started.git
+    ref: master
+    path: charts/sunk
+  values:
+    namespace: stage02
+    image:
+      repository: docker-registry.ad.tt.se/ttab/sunk
+      tag: latest
+      pullPolicy: IfNotPresent
+      env:
+        - name: CONF
+          value: conf-staging.json
+
+#    configmap:
+#      enable: false
+#    
+#    deployment: {}
+#    
+#    resources:
+#      requests:
+#        memory: 40Mi
+#      limits:
+#        memory: 900Mi
+#    
+#    pvc:
+#      enable: false
+#      size: 
+#      accessModes:
+#        - ReadWriteOnce
+#    
+#    service:
+#      enabled: true
+#      name: 
+#      ports:
+#        - name: http
+#          port: 3333
+#          targetPort: 3333
+#    
+#    ingress:
+#      enabled: true
+#      hosts: 
+#        - traefik.a.tt.se/sunk
