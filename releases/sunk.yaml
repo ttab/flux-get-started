@@ -10,6 +10,7 @@ spec:
     ref: master
     path: charts/sunk
   values:
+    namespace: default
     image:
       repository: docker-registry.ad.tt.se/ttab/sunk
       tag: latest
