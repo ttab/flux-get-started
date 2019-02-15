@@ -28,7 +28,7 @@ spec:
       requests:
         memory: 40Mi
       limits:
-        memory: 900Mi
+        memory: 200Mi
     
     pvc:
       enable: false
